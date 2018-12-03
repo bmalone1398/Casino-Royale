@@ -1,15 +1,21 @@
-<!-- Start your project here-->
+
 <body style="font-family: Garamond; background: linear-gradient(to bottom, #800000 0%, #000000 99%); min-height:100vh ;height: auto; background-repeat: no-repeat; background-position: center; background-size: auto">
 <div style="height: auto">
   <div class="flex-center flex-column">
     <h1 class="animated fadeIn mb-4 text-light">Casino Royale</h1>
 
     
-   <canvas style="min-height: 85vh">
+   <canvas style="min-height: 83vh; background: green; border:2px solid #000000;" id="table">
      
    </canvas>
   </div>
 </div>
 <p class="animated fadeIn text-muted flex-center" style="margin:0;padding:0; bottom:0; width:100%; height:auto;">By: Harsha Valluripalli, Ben Malone and Abigehl Slattery</p>
+<script type="text/javascript">
+  var c = document.getElementById("table");
+  var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World", 10, 50); 
+  </script>
 </body>
-<!-- /Start your project here-->
+
