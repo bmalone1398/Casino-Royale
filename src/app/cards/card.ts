@@ -1,10 +1,9 @@
-export class User {
+export class Card {
     id: number;
-    username = '';
-    category: number;
+    suite = '';
+    number: number;
 
     constructor(values: Object = {}) {
       Object.assign(this, values);
     }
 }
-
