@@ -89,21 +89,23 @@ function addWinningCard ($deck, i, side) {
 
 
 
-deck.intro()
-deck.shuffle()
+deck.intro();
+deck.shuffle();
 
 var deckone = deck.cards.splice(0,2);
 var decktwo = deck.cards.splice(0,2);
 var deckthree = deck.cards.splice(0,2);
 var deckfour = deck.cards.splice(0,2);
-deck.mount($container)
-
+deck.mount($container);
+var sum=0;
 var i=0;
 while(i<2)
 {
   deckone[i].mount($phand);
   deckone[i].enableDragging();
   deckone[i].enableFlipping();
+  sum+=deckone[i].rank;
+  console.log(sum );
   i++;
 }
 i=0;
@@ -131,4 +133,6 @@ function hitme()
   deckone[len][0].mount($phand);
   deckone[len][0].enableDragging();
   deckone[len][0].enableFlipping();
+
+  
 }
