@@ -6,7 +6,9 @@ var prefix = Deck.prefix
 var transform = prefix('transform')
 
 var translate = Deck.translate
+$('#hitme').attr('disabled','disabled');
 document.getElementById("hitme").addEventListener("click", hitme);
+document.getElementById("deal").addEventListener("click", deal);
 var $container = document.getElementById('container')
 var $phand= document.getElementById('playerHand')
 var $lphand= document.getElementById('leftPlayerHand')
@@ -92,39 +94,27 @@ function addWinningCard ($deck, i, side) {
 deck.intro();
 deck.shuffle();
 
-var deckone = deck.cards.splice(0,2);
-var decktwo = deck.cards.splice(0,2);
-var deckthree = deck.cards.splice(0,2);
-var deckfour = deck.cards.splice(0,2);
 deck.mount($container);
+var deckone;
+var decktwo ;
+var deckthree;
+var deckfour;
+
 var sum=0;
 var i=0;
-while(i<2)
+
+function deal()
 {
-  deckone[i].mount($phand);
-  deckone[i].enableDragging();
-  deckone[i].enableFlipping();
-  sum+=deckone[i].rank;
-  console.log(sum );
-  i++;
-}
-i=0;
-while(i<2)
-{
-  decktwo[i].mount($lphand);
-  i++;
-}
-i=0;
-while(i<2)
-{
-  deckthree[i].mount($rphand);
-  i++;
-}
-i=0;
-while(i<2)
-{
-  deckfour[i].mount($tphand);
-  i++;
+  var len=deckone.length;
+  deckone= deck.cards.splice(0,2);
+  deckone[0].mount($phand);
+  deckone[0].enableDragging();
+  deckone[0].enableFlipping();
+  deckone[1].mount($phand);
+  deckone[1].enableDragging();
+  deckone[1].enableFlipping();
+  $('#hitme').removeAttr('disabled');
+  $('#deal').attr('disabled','disabled');
 }
 function hitme()
 {
