@@ -29,12 +29,12 @@
   },
   "homepage": "https://github.com/pakastin/deck-of-cards#readme",
   "devDependencies": {
-    "babel": "^5.8.23",
+    "babel": "^6.23.0",
     "chokidar": "^1.0.5",
     "jade": "^1.11.0",
     "nib": "^1.1.0",
     "rollup": "^0.16.4",
-    "stylus": "^0.52.0",
+    "stylus": "^0.54.5",
     "uglify-js": "^2.4.24"
   },
   "dependencies": {

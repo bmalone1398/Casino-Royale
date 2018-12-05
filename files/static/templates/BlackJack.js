@@ -140,7 +140,7 @@ function deal()
   altsum+=of;
   console.log(altsum)
   console.log(sum);
-  $('deal').attr('disabled','disabled');
+  document.getElementById("deal").disabled = true;
   $('hitme').removeAttr('disabled');
 }
 function hitme()
@@ -166,12 +166,14 @@ function hitme()
   if(sum>21)
   {
     alert("You are a Loser.")
+    document.getElementById("deal").disabled = true;
+    document.getElementById("hitme").disabled = true;
   }
   console.log(sum);
   
 }
 function stand()
 {
-  $('deal').attr('disabled','disabled');
-  $('hitme').attr('disabled','disabled');
+  document.getElementById("deal").disabled = true; 
+  document.getElementById("hitme").disabled = true;
 }
