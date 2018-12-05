@@ -102,6 +102,7 @@ var deckthree;
 var deckfour;
 
 var sum=0;
+var altsum=0;
 var i=0;
 
 function deal()
@@ -113,8 +114,30 @@ function deal()
   deckone[1].mount($phand);
   deckone[1].enableDragging();
   deckone[1].enableFlipping();
-  sum+=deckone[0].rank;
-  sum+=deckone[1].rank;
+  var of=deckone[0].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  sum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altsum+=of;
+
+  of=deckone[1].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  sum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altsum+=of;
+  console.log(altsum)
   console.log(sum);
   $('deal').attr('disabled','disabled');
   $('hitme').removeAttr('disabled');
@@ -126,7 +149,23 @@ function hitme()
   deckone[len][0].mount($phand);
   deckone[len][0].enableDragging();
   deckone[len][0].enableFlipping();
-  sum+=deckone[len][0].rank;
+  var oof=deckone[len][0].rank;
+  if(oof>10)
+  {
+    oof=10;
+  }
+  sum+=oof
+  if(oof==1)
+  {
+    oof=11;
+  }
+  altsum+=oof;
+
+  console.log(altsum)
+  if(sum>21)
+  {
+    alert("You are a Loser.")
+  }
   console.log(sum);
   
 }
