@@ -9,6 +9,7 @@ var translate = Deck.translate
 
 document.getElementById("hitme").addEventListener("click", hitme);
 document.getElementById("deal").addEventListener("click", deal);
+document.getElementById("stand").addEventListener("click", stand);
 var $container = document.getElementById('container')
 var $phand= document.getElementById('playerHand')
 var $lphand= document.getElementById('leftPlayerHand')
@@ -168,4 +169,9 @@ function hitme()
   }
   console.log(sum);
   
+}
+function stand()
+{
+  $('deal').attr('disabled','disabled');
+  $('hitme').attr('disabled','disabled');
 }

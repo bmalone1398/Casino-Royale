@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Index, func
 from flask import Flask
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
 from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
@@ -21,6 +23,4 @@ class users(UserMixin, db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
-   
-
 
