@@ -113,6 +113,9 @@ function deal()
   deckone[1].mount($phand);
   deckone[1].enableDragging();
   deckone[1].enableFlipping();
+  sum+=deckone[0].rank;
+  sum+=deckone[1].rank;
+  console.log(sum);
   $('deal').attr('disabled','disabled');
   $('hitme').removeAttr('disabled');
 }
@@ -123,6 +126,7 @@ function hitme()
   deckone[len][0].mount($phand);
   deckone[len][0].enableDragging();
   deckone[len][0].enableFlipping();
-
+  sum+=deckone[len][0].rank;
+  console.log(sum);
   
 }
