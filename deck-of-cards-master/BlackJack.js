@@ -9,6 +9,9 @@ var translate = Deck.translate
 
 var $container = document.getElementById('container')
 var $phand= document.getElementById('playerHand')
+var $lphand= document.getElementById('leftPlayerHand')
+var $rphand= document.getElementById('rightPlayerHand')
+var $tphand= document.getElementById('topPlayerHand')
 var deck = Deck()
 
 deck.cards.forEach(function (card, i) {
@@ -94,14 +97,32 @@ deck.mount($container)
 deck.intro()
 deck.shuffle()
 
-var deckone = deck.cards.splice(0,7);
-var decktwo = deck.cards.splice(0,7);
-var deckthree = deck.cards.splice(0,7);
-var deckfour = deck.cards.splice(0,7);
+var deckone = deck.cards.splice(0,2);
+var decktwo = deck.cards.splice(0,2);
+var deckthree = deck.cards.splice(0,2);
+var deckfour = deck.cards.splice(0,2);
 
 var i=0;
-while(i<7)
+while(i<2)
 {
   deckone[i].mount($phand);
+  i++;
+}
+i=0;
+while(i<2)
+{
+  decktwo[i].mount($lphand);
+  i++;
+}
+i=0;
+while(i<2)
+{
+  deckthree[i].mount($rphand);
+  i++;
+}
+i=0;
+while(i<2)
+{
+  deckfour[i].mount($tphand);
   i++;
 }
