@@ -6,7 +6,7 @@ var prefix = Deck.prefix
 var transform = prefix('transform')
 
 var translate = Deck.translate
-$('#hitme').attr('disabled','disabled');
+
 document.getElementById("hitme").addEventListener("click", hitme);
 document.getElementById("deal").addEventListener("click", deal);
 var $container = document.getElementById('container')
@@ -14,6 +14,7 @@ var $phand= document.getElementById('playerHand')
 var $lphand= document.getElementById('leftPlayerHand')
 var $rphand= document.getElementById('rightPlayerHand')
 var $tphand= document.getElementById('topPlayerHand')
+$('hitme').attr('disabled','disabled');
 var deck = Deck()
 
 deck.cards.forEach(function (card, i) {
@@ -105,7 +106,6 @@ var i=0;
 
 function deal()
 {
-  var len=deckone.length;
   deckone= deck.cards.splice(0,2);
   deckone[0].mount($phand);
   deckone[0].enableDragging();
@@ -113,8 +113,8 @@ function deal()
   deckone[1].mount($phand);
   deckone[1].enableDragging();
   deckone[1].enableFlipping();
-  $('#hitme').removeAttr('disabled');
-  $('#deal').attr('disabled','disabled');
+  $('deal').attr('disabled','disabled');
+  $('hitme').removeAttr('disabled');
 }
 function hitme()
 {
