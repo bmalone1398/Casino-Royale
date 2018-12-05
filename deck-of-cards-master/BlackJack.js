@@ -6,7 +6,7 @@ var prefix = Deck.prefix
 var transform = prefix('transform')
 
 var translate = Deck.translate
-
+document.getElementById("hitme").addEventListener("click", hitme);
 var $container = document.getElementById('container')
 var $phand= document.getElementById('playerHand')
 var $lphand= document.getElementById('leftPlayerHand')
@@ -15,12 +15,7 @@ var $tphand= document.getElementById('topPlayerHand')
 var deck = Deck()
 
 deck.cards.forEach(function (card, i) {
-  card.enableDragging()
-  card.enableFlipping()
-
-  card.$el.addEventListener('mousedown', onTouch)
-  card.$el.addEventListener('touchstart', onTouch)
-
+  
   function onTouch () {
     var card
     card = Deck.Card(52 + j)
@@ -92,7 +87,7 @@ function addWinningCard ($deck, i, side) {
 
 
 
-deck.mount($container)
+
 
 deck.intro()
 deck.shuffle()
@@ -101,11 +96,14 @@ var deckone = deck.cards.splice(0,2);
 var decktwo = deck.cards.splice(0,2);
 var deckthree = deck.cards.splice(0,2);
 var deckfour = deck.cards.splice(0,2);
+deck.mount($container)
 
 var i=0;
 while(i<2)
 {
   deckone[i].mount($phand);
+  deckone[i].enableDragging();
+  deckone[i].enableFlipping();
   i++;
 }
 i=0;
@@ -125,4 +123,12 @@ while(i<2)
 {
   deckfour[i].mount($tphand);
   i++;
+}
+function hitme()
+{
+  var len=deckone.length;
+  deckone[len]= deck.cards.splice(0,1);
+  deckone[len][0].mount($phand);
+  deckone[len][0].enableDragging();
+  deckone[len][0].enableFlipping();
 }
