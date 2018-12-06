@@ -15,11 +15,10 @@ from oauthlib.oauth2.rfc6749.errors import InvalidClientIdError
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import re
 from sqlalchemy import func
-from files.form import (LoginForm) 
+from files.form import (LoginForm, RegisterForm) 
 from files.__init__ import users
 
 @app.route('/mainpage', methods=['GET', 'POST'])
-@login_required
 def mainpage():
     return render_template("Main.html")
 
@@ -36,5 +35,15 @@ def login():
     return render_template('login.html', form=form)
 
 
+@app.route("/register", methods=['GET', 'POST'])
+def signup():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        user = users(username=form.username.data, email=form.email.data, password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
 
 
