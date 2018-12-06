@@ -10,7 +10,9 @@ app = Flask(__name__)
 
 Bootstrap(app)
 
+app.config['SECRET_KEY'] = 'THIS_IS_SECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://casinoroyale:passpass@casinoroyale.csu6kcem8ioz.us-east-2.rds.amazonaws.com/casinoroyale'
+
 
 db = SQLAlchemy(app)
 
