@@ -1,24 +1,21 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='scripts/facebook-google.js') }}"></script>
-<meta name="google-signin-client_id" content="640840633381-8rrcgg5r9hru2al5e853jq95valimmd5.apps.googleusercontent.com">
-{% block title %}
 
+{% block title %}
+Sign In
 {% endblock %}
 
 {% block styles %}
 <head>
-  
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Casino Royale</title>
+    <title>Help Me Recipe</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
 
@@ -26,7 +23,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <!-- css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -40,53 +37,56 @@
 
     <link href="../static/styles/main.css" rel="stylesheet">
     </div>
+
     <style>
             body{
              font-family: 'Poppins', sans-serif;
-                 
+                  
                    background-size: 100%;
                    margin:0;
                  }
            </style>
 </head>
 {% endblock %}
-
+{% block content %}
 <body>
 
     <div style="height: 100vh;  background-image: linear-gradient(to top right, rgb(255, 0, 0), rgb(0, 0, 0)); ">
 
+
     <!-- Navigation -->
     <div class="jumbotron " style="background-color: transparent; background-size:100%">
 
-     
-
         <h1 class="display-4 text-center text-light font-weight-bold">Casino Royale</h1>
 
-      
+     
 
     </div>
 
-    <div class="container padding text-center">
-	    <div class="login-popup-heading text-center text-light">
-	        <h4 class="text-light"><i class="fa fa-lock text-light" aria-hidden="true"></i> Login </h4>
-	    </div>
-	</div>
 
-    <form id="loginMember" role="form" action="{{ url_for('login') }}" method="post">
-    	<div class="container  text-center" style="width: 30%">
-    		{{ form.hidden_tag() }}
-            {{ wtf.form_field(form.email) }}
-            {{ wtf.form_field(form.password) }}
+    <div class="container  text-center">
+        <div class="login-popup-heading text-center text-light">
+            <h4><i class="fas fa-user" aria-hidden="true"></i> Register </h4>  
+        </div>                     
+    </div>
 
-        	<button type="submit" class="btn btn-danger login-popup-btn" name="submit"
-        value="1">Login</button>
+    <form id="loginMember" role="form" action="{{ url_for('signup') }}" method="post">
+        <div class="container  text-center" style="width: 30%">
+
+                {{ form.hidden_tag() }}
+                {{ wtf.form_field(form.email) }}
+                {{ wtf.form_field(form.username) }}
+                {{ wtf.form_field(form.password) }}
+                {{ wtf.form_field(form.confirm_password) }}
+
+        <button type="submit" class="btn btn-danger login-popup-btn" name="submit" value="1">Register</button>
         </div>
     </form>
 
-	<div class="mb-4"></div>
-	</div>
-
-</div>
+    <div class="mb-4"></div>
+    
+    </div>
+    
 </body>
 
 </html>
