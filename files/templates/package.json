@@ -38,6 +38,8 @@
     "uglify-js": "^2.4.24"
   },
   "dependencies": {
-    "deck-of-cards": "^0.1.8"
+    "deck-of-cards": "^0.1.8",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   }
 }
