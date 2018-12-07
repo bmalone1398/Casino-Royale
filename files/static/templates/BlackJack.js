@@ -249,7 +249,7 @@ function hitme()
   console.log(altsum)
   if(sum>21)
   {
-    alert("You are a Loser.")
+    document.getElementById("stand").click();
   }
   console.log(sum);
   if(rightsum>15 && standright==0 && altright!=21)
@@ -347,6 +347,10 @@ function stand()
   var lsum;
   var tsum;
   var playersum;
+  var pm=0;
+  var rm=0;
+  var lm=0;
+  var tm=0;
   playersum=sum;
   rsum=rightsum;
   lsum=leftsum;
@@ -367,7 +371,38 @@ function stand()
   {
     tsum=alttop;
   }
-  alert("Right Player:"+rsum+"\n"+"Left Player:"+lsum+"\n"+"Top Player:"+tsum+"\n"+"Player:"+playersum+"\n" )
+  pm=playersum;
+  tm=tsum;
+  rm=rsum;
+  lm=lsum;
+  if(playersum>21)
+  {
+    pm=0;
+  }
+  if(tsum>21)
+  {
+    tm=0;
+  }
+  if(rsum>21)
+  {
+    rm=0;
+  }
+  if(lsum>21)
+  {
+    lm=0;
+  }
+  var win="You lose you loser.";
+  if(pm>rm)
+  {
+    if(pm>lm)
+    {
+      if(pm>tm)
+      {
+        win="You win";
+      }
+    }
+  }
+  alert("Right Player:"+rsum+"\n"+"Left Player:"+lsum+"\n"+"Top Player:"+tsum+"\n"+"Player:"+playersum+"\n"+win )
   $('deal').attr('disabled','disabled');
   $('hitme').attr('disabled','disabled');
 }
