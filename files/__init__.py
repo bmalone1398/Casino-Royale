@@ -23,6 +23,7 @@ Bootstrap(app)
 
 app.config['SECRET_KEY'] = 'THIS_IS_SECRET'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://casinoroyale:passpass@casinoroyale.csu6kcem8ioz.us-east-2.rds.amazonaws.com/casinoroyale'
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 login_manager = LoginManager()
 login_manager.init_app(app)
