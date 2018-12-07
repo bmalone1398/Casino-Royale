@@ -10,10 +10,12 @@ app.get('/', function(req, res){
 });
 
 app.get('/dist/deck.js',function(req,res){
+  console.log("Hello")
   res.sendFile(__dirname + '/dist/deck.js')
 });
 
 app.get('/BlackJack.js',function(req,res){
+  console.log(__dirname)
   res.sendFile(__dirname + '/BlackJack.js')
 });
 
