@@ -25,10 +25,11 @@
     
       </head>
     <body style="font-family: Garamond; background: linear-gradient(to bottom, #800000 0%, #000000 99%); min-height:100vh ;height: auto; background-repeat: no-repeat; background-position: center; background-size: auto">
-    <div style="height: auto" style="padding: 2px">
+    <div style="height: auto" >
       <div class="flex-center flex-column">
         <h1 class="animated fadeIn mb-4 text-light" style="padding-bottom:0">Casino Royale</h1>
-       
+        <a class="text-light" href="{{ url_for('logout') }}" style="position:absolute; left:0; top:50px">Logout</a>
+    <a class="text-light" href="{{ url_for('leaderboard') }}" style="position:absolute; right:0; top:75px">Leaderboard</a>
         
   
       
@@ -60,8 +61,7 @@
       <button class="btn-elegant" id="stand" style="left:210px;bottom:5px; position: absolute;padding:5px">Stand</button>
      
     </div>
-    <a class="text-light" href="{{ url_for('logout') }}" style="">Logout</a>
-    <a class="text-light" href="{{ url_for('leaderboard') }}" style="">Leaderboard</a>
+   
     <br>
     <p class="animated fadeIn text-muted flex-center" style="margin:0;padding:0; bottom:0; width:100%; height:auto; position:absolute">By: Harsha Valluripalli, Ben Malone and Abigehl Slattery</p>
     <script src="../static/templates/node_modules/deck-of-cards/dist/deck.min.js"></script>
