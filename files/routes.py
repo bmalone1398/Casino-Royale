@@ -49,6 +49,6 @@ def signup():
 
 @app.route("/leaderboard", methods=['GET', 'POST'])
 def leaderboard():
-    scores = db.engine.execute("SELECT * FROM users")
+    scores = db.engine.execute("SELECT * FROM users ORDER BY score DESC")
     db.session.commit()
     return render_template("leaderboard.html", scores=scores)
