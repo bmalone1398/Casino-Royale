@@ -399,10 +399,24 @@ function stand()
       if(pm>tm)
       {
         win="You win";
+       
       }
     }
   }
-  alert("Right Player:"+rsum+"\n"+"Left Player:"+lsum+"\n"+"Top Player:"+tsum+"\n"+"Player:"+playersum+"\n"+win )
+  alert("Right Player:"+rsum+"\n"+"Left Player:"+lsum+"\n"+"Top Player:"+tsum+"\n"+"Player:"+playersum+"\n"+win );
+  if(pm>rm)
+  {
+    if(pm>lm)
+    {
+      if(pm>tm)
+      {
+        window.location.replace('../win/'+"100");
+       
+      }
+    }
+  }
+
+
   $('deal').attr('disabled','disabled');
   $('hitme').attr('disabled','disabled');
 }
