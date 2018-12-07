@@ -1,6 +1,5 @@
 
 /* global Deck */
-
 var prefix = Deck.prefix
 
 var transform = prefix('transform')
@@ -229,6 +228,13 @@ function deal()
 }
 function hitme()
 {
+
+  $con = mysql_connect('casinoroyale.csu6kcem8ioz.us-east-2.rds.amazonaws.com', 'casinoroyale', 'passpass');
+  if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+
   var len=deckone.length;
   deckone[len]= deck.cards.splice(0,1);
   deckone[len][0].mount($phand);
