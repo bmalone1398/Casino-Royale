@@ -390,14 +390,14 @@ function stand()
   {
     lm=0;
   }
-  var win="You lose you loser.";
+  var win="You lose.";
   if(pm>rm)
   {
     if(pm>lm)
     {
       if(pm>tm)
       {
-        win="You win";
+        win="You win.";
        
       }
     }
