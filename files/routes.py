@@ -47,3 +47,6 @@ def signup():
     return render_template('register.html', title='Register', form=form)
 
 
+@app.route("/leaderboard", methods=['GET', 'POST'])
+def leaderboard():
+    return render_template("leaderboard.html")
