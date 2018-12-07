@@ -1,6 +1,5 @@
 
 /* global Deck */
-
 var prefix = Deck.prefix
 
 var transform = prefix('transform')
