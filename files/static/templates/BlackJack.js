@@ -103,9 +103,17 @@ var deckthree;
 var deckfour;
 
 var sum=0;
-var altsum=0;
+var altsum=0
+var rightsum=0;
+var altright=0;
+var leftsum=0;
+var altleft=0;
+var topsum=0;
+var alttop=0;
 var i=0;
-
+var standright=0;
+var standleft=0;
+var standtop=0;
 function deal()
 {
   deckone= deck.cards.splice(0,2);
@@ -138,9 +146,85 @@ function deal()
     of=11;
   }
   altsum+=of;
-  console.log(altsum)
-  console.log(sum);
-  document.getElementById("deal").disabled = true;
+  decktwo= deck.cards.splice(0,2);
+  decktwo[0].mount($lphand);
+  decktwo[1].mount($lphand);
+  of=decktwo[0].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  leftsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altleft+=of;
+
+  of=decktwo[1].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  leftsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altleft+=of;
+  deckthree= deck.cards.splice(0,2);
+  deckthree[0].mount($rphand);
+  deckthree[1].mount($rphand);
+  of=deckthree[0].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  rightsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altright+=of;
+
+  of=deckthree[1].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  rightsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  altright+=of;
+  deckfour= deck.cards.splice(0,2);
+  deckfour[0].mount($tphand);
+  deckfour[1].mount($tphand);
+  var of=deckfour[0].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  topsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  alttop+=of;
+
+  of=deckfour[1].rank
+  if(of>10)
+  {
+    of=10;
+  }
+  topsum+=of;
+  if(of==1)
+  {
+    of=11;
+  }
+  alttop+=of;
+  $('deal').attr('disabled','disabled');
   $('hitme').removeAttr('disabled');
 }
 function hitme()
@@ -166,14 +250,124 @@ function hitme()
   if(sum>21)
   {
     alert("You are a Loser.")
-    document.getElementById("deal").disabled = true;
-    document.getElementById("hitme").disabled = true;
   }
   console.log(sum);
-  
+  if(rightsum>15 && standright==0 && altright!=21)
+  {
+    if(rightsum<21)
+    {
+       len=deckthree.length;
+      deckthree[len]= deck.cards.splice(0,1);
+      deckthree[len][0].mount($rphand);
+       oof=deckthree[len][0].rank;
+      if(oof>10)
+      {
+        oof=10;
+      }
+      rightsum+=oof
+      if(oof==1)
+      {
+        oof=11;
+      }
+      altright+=oof;
+       
+    }
+  }
+  else
+  {
+    if(standright==0)
+    {
+      standright=1;
+    }
+  }
+  if(leftsum>16 && standleft==0 && altleft!=21)
+  {
+    if(leftsum<21)
+    {
+       len=decktwo.length;
+      decktwo[len]= deck.cards.splice(0,1);
+      decktwo[len][0].mount($lphand);
+      decktwo[len][0].enableDragging();
+      decktwo[len][0].enableFlipping();
+       oof=decktwo[len][0].rank;
+      if(oof>10)
+      {
+        oof=10;
+      }
+      leftsum+=oof
+      if(oof==1)
+      {
+        oof=11;
+      }
+      altleft+=oof;
+       
+    }
+  }
+  else
+  {
+    if(standleft==0)
+    {
+      standleft=1;
+    }
+  }
+  if(topsum>17 && standtop==0 && alttop!=21)
+  {
+    if(topsum<21)
+    {
+       len=deckfour.length;
+      deckfour[len]= deck.cards.splice(0,1);
+      deckfour[len][0].mount($tphand);
+      deckfour[len][0].enableDragging();
+      deckfour[len][0].enableFlipping();
+       oof=deckfour[len][0].rank;
+      if(oof>10)
+      {
+        oof=10;
+      }
+      topsum+=oof
+      if(oof==1)
+      {
+        oof=11;
+      }
+      alttop+=oof;
+       
+    }
+  }
+  else
+  {
+    if(standtop==0)
+    {
+      standtop=1;
+    }
+  }
 }
 function stand()
 {
-  document.getElementById("deal").disabled = true; 
-  document.getElementById("hitme").disabled = true;
+  var rsum;
+  var lsum;
+  var tsum;
+  var playersum;
+  playersum=sum;
+  rsum=rightsum;
+  lsum=leftsum;
+  tsum=topsum;
+  if(altsum<22)
+  {
+    playersum=altsum;
+  }
+  if(altright<22)
+  {
+    rsum=altright;
+  }
+  if(altleft<22)
+  {
+    lsum=altleft;
+  }
+  if(alttop<22)
+  {
+    tsum=alttop;
+  }
+  alert("Right Player:"+rsum+"\n"+"Left Player:"+lsum+"\n"+"Top Player:"+tsum+"\n"+"Player:"+playersum+"\n" )
+  $('deal').attr('disabled','disabled');
+  $('hitme').attr('disabled','disabled');
 }

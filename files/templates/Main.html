@@ -28,12 +28,14 @@
     <div style="height: auto" style="padding: 2px">
       <div class="flex-center flex-column">
         <h1 class="animated fadeIn mb-4 text-light" style="padding-bottom:0">Casino Royale</h1>
-    
+       
+        
+  
       
         
           <canvas class="row" style="background-color:green; height:120%; width:75%; border-color:black; padding-top: 0; position: relative;">
              
-          </canvas>
+             </canvas>
             <div id="container" style="position: absolute; background-color: powderblue;">
         
               </div>
@@ -49,14 +51,16 @@
               <div id="topPlayerHand" style="position: absolute; top:160px; background-color:red">
 
                 </div>
+              
                
       </div>
 
       <button class="btn-elegant" id="hitme" style="left:160px; bottom:5px; position: absolute;padding:5px">Hit</button>
       <button class="btn-elegant" id="deal" style="left:100px; bottom:5px;position: absolute;padding:5px">Deal</button>
       <button class="btn-elegant" id="stand" style="left:210px;bottom:5px; position: absolute;padding:5px">Stand</button>
+     
     </div>
-  
+    <a class="text-light" href="{{ url_for('login') }}" style="">Leaderboard</a>
     <p class="animated fadeIn text-muted flex-center" style="margin:0;padding:0; bottom:0; width:100%; height:auto; position:absolute">By: Harsha Valluripalli, Ben Malone and Abigehl Slattery</p>
     <script src="../static/templates/node_modules/deck-of-cards/dist/deck.min.js"></script>
     
