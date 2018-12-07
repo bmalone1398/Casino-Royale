@@ -103,13 +103,7 @@ var deckthree;
 var deckfour;
 
 var sum=0;
-var altsum=0
-var rightsum=0;
-var altright=0;
-var leftsum=0;
-var altleft=0;
-var topsum=0;
-var alttop=0;
+var altsum=0;
 var i=0;
 
 function deal()
@@ -144,85 +138,9 @@ function deal()
     of=11;
   }
   altsum+=of;
-  decktwo= deck.cards.splice(0,2);
-  decktwo[0].mount($lphand);
-  decktwo[1].mount($lphand);
-  of=decktwo[0].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  leftsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  altleft+=of;
-
-  of=decktwo[1].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  leftsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  altleft+=of;
-  deckthree= deck.cards.splice(0,2);
-  deckthree[0].mount($rphand);
-  deckthree[1].mount($rphand);
-  of=deckthree[0].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  rightsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  altright+=of;
-
-  of=deckthree[1].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  rightsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  altright+=of;
-  deckfour= deck.cards.splice(0,2);
-  deckfour[0].mount($tphand);
-  deckfour[1].mount($tphand);
-  var of=deckfour[0].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  topsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  alttop+=of;
-
-  of=deckfour[1].rank
-  if(of>10)
-  {
-    of=10;
-  }
-  topsum+=of;
-  if(of==1)
-  {
-    of=11;
-  }
-  alttop+=of;
-  $('deal').attr('disabled','disabled');
+  console.log(altsum)
+  console.log(sum);
+  document.getElementById("deal").disabled = true;
   $('hitme').removeAttr('disabled');
 }
 function hitme()
@@ -248,12 +166,14 @@ function hitme()
   if(sum>21)
   {
     alert("You are a Loser.")
+    document.getElementById("deal").disabled = true;
+    document.getElementById("hitme").disabled = true;
   }
   console.log(sum);
   
 }
 function stand()
 {
-  $('deal').attr('disabled','disabled');
-  $('hitme').attr('disabled','disabled');
+  document.getElementById("deal").disabled = true; 
+  document.getElementById("hitme").disabled = true;
 }
