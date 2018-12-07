@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import json
 from pusher import Pusher
 from files import app, db
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_dance.contrib.google import make_google_blueprint, google
@@ -18,8 +18,11 @@ from sqlalchemy import func
 from files.form import (LoginForm, RegisterForm) 
 from files.__init__ import users
 
+userid = 0
+
 @app.route('/mainpage', methods=['GET', 'POST'])
 def mainpage():
+
     return render_template("Main.html")
 
 
@@ -29,7 +32,9 @@ def login():
     if form.validate_on_submit():
         user = users.query.filter_by(email=form.email.data).first()
         if user.password == form.password.data:
-            return redirect(url_for('mainpage'))
+            global userid
+            userid = user.id
+            return redirect(url_for('mainpage',userid = user.id))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', form=form)
@@ -52,3 +57,17 @@ def leaderboard():
     scores = db.engine.execute("SELECT * FROM users ORDER BY score DESC")
     db.session.commit()
     return render_template("leaderboard.html", scores=scores)
+
+@app.route("/win/100", methods=['GET', 'POST'])
+def win():
+    scores = users.query.filter_by(id = userid).first()
+
+    addScore = scores.score + 100
+
+    db.engine.execute("UPDATE users SET score = %s WHERE id = %s", addScore, userid)
+
+    return redirect(url_for('mainpage'))
+
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    return redirect(url_for('login'))

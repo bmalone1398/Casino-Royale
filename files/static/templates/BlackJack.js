@@ -409,8 +409,7 @@ function stand()
     {
       if(pm>tm)
       {
-        window.location.replace('../win/'+"100");
-       
+        window.location.replace('../win/'+"100"); 
       }
     }
   }
