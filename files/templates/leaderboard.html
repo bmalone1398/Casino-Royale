@@ -29,8 +29,15 @@
                 <h1 class="animated fadeIn mb-4 text-light" style="padding-bottom:0">Casino Royale</h1>
                 <br>
                 <h2 class="animated fadeIn mb-4 text-light" style="padding-bottom:0">Leaderboard</h2>
+               
                 {% for x in scores %}
-                    {{x.username}} : {{x.score}}                 
+                <div class="">
+                    
+                        <p class="card-text text-light mr-2 ml-2">{{x.username}}: {{x.score}}</p>
+                       
+                    
+                </div>
+                             
                 {% endfor %}
             </div>
         </div>
