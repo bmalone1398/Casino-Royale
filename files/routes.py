@@ -39,7 +39,7 @@ def login():
 def signup():
     form = RegisterForm()
     if form.validate_on_submit():
-        user = users(username=form.username.data, email=form.email.data, password=form.password.data)
+        user = users(username=form.username.data, email=form.email.data, password=form.password.data, score = 100)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
